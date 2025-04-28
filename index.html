@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESSKA Web Scraper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ESSKA Web Scraper</h1>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="card">
+            <form id="scraper-form">
+                <div class="form-group">
+                    <label for="url">Website URL</label>
+                    <input 
+                        type="text" 
+                        id="url" 
+                        name="url" 
+                        placeholder="https://www.esska.de/shop/Raeder-und-Rollen/Rollen-Set--28750" 
+                        value="https://www.esska.de/shop/Raeder-und-Rollen/Rollen-Set--28750"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="maxProducts">Maximale Anzahl an Produkten</label>
+                    <input 
+                        type="number" 
+                        id="maxProducts" 
+                        name="maxProducts" 
+                        min="1" 
+                        max="100" 
+                        value="10"
+                        required
+                    >
+                </div>
+
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="usePlaywright" name="usePlaywright" checked>
+                    <label for="usePlaywright">
+                        <span>Playwright verwenden (empfohlen)</span>
+                        <small>Aktiviert JavaScript-Rendering für bessere Ergebnisse</small>
+                    </label>
+                </div>
+
+                <button type="submit" id="submit-btn">
+                    <span class="icon">🔍</span> Scraping starten
+                </button>
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <span>Scraping läuft...</span>
+                </div>
+            </form>
+        </div>
+
+        <div id="error-message" class="error-message hidden"></div>
+
+        <div id="results-container" class="hidden">
+            <div class="results-header">
+                <div>
+                    <h2>Scraping Ergebnisse</h2>
+                    <p id="results-summary"></p>
+                </div>
+                <div class="download-buttons">
+                    <button id="download-json" class="btn-secondary">
+                        <span class="icon">📄</span> JSON
+                    </button>
+                    <button id="download-csv" class="btn-secondary">
+                        <span class="icon">📊</span> CSV
+                    </button>
+                </div>
+            </div>
+            <div id="results-list"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>ESSKA Web Scraper - Extrahiert Produkttitel und Beschreibungen von E-Commerce-Websites</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
